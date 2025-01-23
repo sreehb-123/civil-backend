@@ -2,4 +2,3 @@ node_modules
 .env
 list.json
 faculty_sample_data.json
-firebase_admin.js
