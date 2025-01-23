@@ -63,7 +63,7 @@ router.put('/update', async (req, res) => {
     }
 });
 
-router.post('/api/facultyId', async (req, res) => {
+router.post('/facultyId', async (req, res) => {
     const { token } = req.body;
 
     try {
