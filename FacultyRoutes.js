@@ -1,5 +1,6 @@
 import express from 'express';
 import Faculty from './FacultyModel.js';
+import admin from './firebase-admin.js';
 
 const router = express.Router();
 
