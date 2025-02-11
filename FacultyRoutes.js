@@ -66,7 +66,7 @@ router.put('/update', async (req, res) => {
 
 router.post('/facultyId', async (req, res) => {
     const { token } = req.body;
-
+    console.log(token);
     try {
         const decodedToken = await admin.auth().verifyIdToken(token);
         const email = decodedToken.email;
