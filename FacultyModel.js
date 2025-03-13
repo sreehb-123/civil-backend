@@ -59,7 +59,8 @@ const FacultySchema = new mongoose.Schema({
     awards: { type: [String], },
     linkedin: { type: String, },
     researchGate: { type: String, },
-    googleScholar: { type: String, }
+    googleScholar: { type: String, },
+    publicationsArray : { type: [String] }
 }, { collection: 'faculty' });
 
 const Faculty = mongoose.model('Faculty', FacultySchema);

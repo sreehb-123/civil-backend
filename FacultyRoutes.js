@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/faculties', async (req, res) => {
     try {
-        const faculties = await Faculty.find({}, 'name role image');
+        const faculties = await Faculty.find({}, 'name role image addlRole');
         if (!faculties || faculties.length === 0) {
             return res.status(404).json({ message: 'No faculties found' });
         }
@@ -22,6 +22,11 @@ router.get('/faculty/:id', async (req, res) => {
         if (!faculty) {
             return res.status(404).json({ message: 'Faculty not found' });
         }
+        
+        //console.log("hi",faculty.publicationsArray.length);
+
+        // if(faculty.publicationsArray.length === 0) faculty = faculty.remove(publicationsArray);
+        
         res.status(200).json(faculty);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching faculty details', error });
@@ -54,8 +59,14 @@ router.put('/update', async (req, res) => {
         // Update the specific field
         faculty[field] = editedData;
 
+        console.log("field", field);
+        console.log(faculty.name);
+        console.log(editedData);
+
         // Save the document back to the database
         await faculty.save();
+
+        console.log(faculty);
 
         res.status(200).json({ message: `${field} updated successfully` });
     } catch (error) {
