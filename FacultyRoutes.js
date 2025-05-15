@@ -6,11 +6,12 @@ const router = express.Router();
 
 router.get('/faculties', async (req, res) => {
     try {
-        const faculties = await Faculty.find({}, 'name role image addlRole');
+        const faculties = await Faculty.find({}, 'name role image addlRole personalUrl');
         if (!faculties || faculties.length === 0) {
             return res.status(404).json({ message: 'No faculties found' });
         }
         res.status(200).json(faculties);
+        //console.log(faculties);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching faculty data', error });
     }
